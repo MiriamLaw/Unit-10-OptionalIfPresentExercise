@@ -11,6 +11,11 @@ public class SuspectLocation {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "SuspectLocation [name=" + name + ", country=" + country + "]";
+	}
+
 	public String getCountry() {
 		return country;
 	}
