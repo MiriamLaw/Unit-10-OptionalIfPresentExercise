@@ -19,12 +19,19 @@ public class FileService {
 		};
 
 		for (String fileName : fileNames) {
+			//debug statement
+			System.out.println("Processing file: " + fileName);
 
 			try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
 
 				String line;
 				String headerLine = fileReader.readLine();
 				while ((line = fileReader.readLine()) != null) {
+					//trying to handle the header line differently
+					if (headerLine == null) {
+						headerLine = line;
+						continue;
+					}
 					String[] reportData = line.split(",");
 					if (reportData.length == 2) {
 						String country = reportData[0];

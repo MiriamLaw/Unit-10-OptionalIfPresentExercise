@@ -8,6 +8,9 @@ public class SuspectLocationApplication {
 	public static void main(String[] args) {
 
 		List<SuspectLocation> suspectLocations = FileService.getSuspectsFromFile();
+		
+		//debug statement
+		System.out.println("Total Suspect Locations: " + suspectLocations.size());
 
 		Optional<SuspectLocation> carmenLocation = suspectLocations.stream()
 																   .filter(location -> "CARMEN SANDIEGO".equals(location.getName()))
