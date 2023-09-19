@@ -27,6 +27,7 @@ public class FileService {
 				String line;
 				String headerLine = fileReader.readLine();
 				while ((line = fileReader.readLine()) != null) {
+//					System.out.println("Reading line: " + line);
 					//trying to handle the header line differently
 					if (headerLine == null) {
 						headerLine = line;
@@ -38,6 +39,7 @@ public class FileService {
 						String name = reportData[1];
 						SuspectLocation location = new SuspectLocation(country, name);
 						locations.add(location);
+//						System.out.println("Added SuspectLocation: " + location);
 					}
 
 				}
