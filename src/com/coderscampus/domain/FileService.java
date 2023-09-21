@@ -11,35 +11,26 @@ public class FileService {
 	public static List<SuspectLocation> getSuspectsFromFile() {
 		List<SuspectLocation> locations = new ArrayList<>();
 
-		String[] fileNames = { 
-				"InterpolWatchReport-Week1.csv", 
-				"InterpolWatchReport-Week2.csv",
-				"InterpolWatchReport-Week3.csv" 
-				
+		String[] fileNames = { "InterpolWatchReport-Week1.csv", "InterpolWatchReport-Week2.csv",
+				"InterpolWatchReport-Week3.csv"
+
 		};
 
 		for (String fileName : fileNames) {
-			//debug statement
-			System.out.println("Processing file: " + fileName);
 
 			try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
 
 				String line;
 				String headerLine = fileReader.readLine();
 				while ((line = fileReader.readLine()) != null) {
-//					System.out.println("Reading line: " + line);
-					//trying to handle the header line differently
-					if (headerLine == null) {
-						headerLine = line;
-						continue;
-					}
+
 					String[] reportData = line.split(",");
 					if (reportData.length == 2) {
 						String country = reportData[0];
 						String name = reportData[1];
 						SuspectLocation location = new SuspectLocation(country, name);
 						locations.add(location);
-//						System.out.println("Added SuspectLocation: " + location);
+
 					}
 
 				}
